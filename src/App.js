@@ -1,7 +1,7 @@
-import React from 'react'; 
-import './App.css'; 
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; 
-import ImagePreview from './component/ImagepreviewArea/ImagePreview'
+import React from 'react';
+import './App.css';
+import CSSTransitionGroup from 'react-addons-css-transition-group';
+import ImagePreview from './components/ImagePreviewArea/ImagePreview'
 import Checkout from './components/CheckoutArea/Checkout'
 
 class Overlay extends React.Component {
@@ -26,17 +26,17 @@ class Container extends React.Component {
 
 class Header extends React.Component {
   render() {
-    return() {
+    return(
       <header>
         <input onChange={this.props.onChange} type='range' max='100' min='1' step='1' />
       </header>
-    }; 
+    )
   }
 }
 
 class App extends React.Component {
-  constructor() {
-    super(
+  constructor(props) {
+    super(props)
     this.state = {
       mounted: false, 
       people: 1, 
@@ -44,30 +44,21 @@ class App extends React.Component {
       tax: 20, 
       duration: 5, 
       discount: 5
-    }); 
-  }, 
-
-  componentDidMount() {
-    constructor
-    this.state({ 
-      mounted: true
-    }, 
-    
-    this.handleSubmit = this.handleSubmit.bind(this)
-    )
+    }; 
   }
 
-  componentdidMount() {
+  componentDidMount() {
     this.setState({
       mount: true
     })
   }
-},  
+
 
   handleSubmit(e) {
-    console.log('handle ajax submission here'); 
     e.preventDefault(); 
-  }, 
+    console.log('handle ajax submission here'); 
+    
+  }
 
   handleChange(e) {
     this.setState({
@@ -92,17 +83,18 @@ class App extends React.Component {
   
     return(
       <div className='App'>
-        <ReactCSSTransitionGroup tansitionName='overlay' transitionEnterTimeout={300} transitionLeaveTimeout={300}>
+        <CSSTransitionGroup transitionName='overlay' transitionEnterTimeout={300} transitionLeaveTimeout={300}>
           {overlay}
-        </ReactCSSTransitionGroup>
-        <ReactCSSTransitionGroup transitionName='container' transitionEnterTimeout={500} transitionLevelTimeout={300}>
+        </CSSTransitionGroup>
+        <CSSTransitionGroup transitionName='container' transitionEnterTimeout={500} transitionLevelTimeout={300}>
           {container}
-        </ReactCSSTransitionGroup>
+        </CSSTransitionGroup>
         <Header onChange={this.handleChange} />  
       </div>
       );
-    }
   }
-  
-  export default app
+}
+
+
+  export default App
 
