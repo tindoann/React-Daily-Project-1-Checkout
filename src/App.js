@@ -14,9 +14,9 @@ class Overlay extends React.Component {
   } 
 }; 
 
-class Container extends React.Component {
-  render() {
-    return (
+class Container extends React.Component{
+  constructor(){
+    super(
       <div className='Container'>
         {this.props.children}
       </div>
@@ -45,6 +45,7 @@ class App extends React.Component {
       duration: 5, 
       discount: 5
     }; 
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   componentDidMount() {
